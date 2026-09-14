@@ -21,7 +21,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
+      - name: Debug OIDC
+        uses: github/actions-oidc-debugger@main
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
