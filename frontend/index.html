@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TaskFlow</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            margin: 0;
+            min-height: 100vh;
+            padding: 50px 20px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 22px;
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 38px;
+            color: #4f46e5;
+            margin: 0 0 8px;
+        }
+
+        .header p {
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .task-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .task-form input {
+            flex: 1;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            background: #f9fafb;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .task-form input:focus {
+            border-color: #6366f1;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+        }
+
+        .task-form button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .task-form button:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 12px;
+            padding: 15px 16px;
+            border-radius: 14px;
+        }
+
+        .task-list li:hover {
+            background: white;
+            border-color: #c7d2fe;
+            transform: translateY(-2px);
+        }
+
+        .task-list li > span {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .done-btn,
+        .delete-btn {
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .done-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .done-btn:hover {
+            background: #16a34a;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #9ca3af;
+            opacity: 0.7;
+        }
+
+        .stats {
+            text-align: center;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 35px 20px;
+            color: #9ca3af;
+            background: #f9fafb;
+            border-radius: 14px;
+            border: 1px dashed #d1d5db;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 25px 18px;
+            }
+
+            .task-form {
+                flex-direction: column;
+            }
+
+            .task-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>TaskFlow</h1>
+        <p>Organize your day smarter</p>
+    </div>
+
+    <form id="task-form" class="task-form">
+
+        <input
+            type="text"
+            id="task-input"
+            placeholder="What needs to be done?"
+            required>
+
+        <button type="submit">
+            ➕ Add
+        </button>
+
+    </form>
+
+    <ul id="task-list" class="task-list"></ul>
+
+    <div id="stats" class="stats"></div>
+
+</div>
+
+<script src="/app.js"></script>
+
+</body>
+</html>
