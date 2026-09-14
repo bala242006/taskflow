@@ -4,7 +4,9 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
 
     principals {
       type        = "Federated"
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"]
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
+      ]
     }
 
     actions = [
@@ -20,7 +22,9 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:bala242006@225511243/taskflow@1369601175:ref:refs/heads/main"]
+      values   = [
+        "repo:bala242006@225511243/taskflow@1369601175:ref:refs/heads/main"
+      ]
     }
   }
 }
@@ -59,6 +63,7 @@ resource "aws_iam_role_policy" "github_actions_ecr" {
 
         Action = [
           "ecr:BatchCheckLayerAvailability",
+          "ecr:BatchGetImage",
           "ecr:CompleteLayerUpload",
           "ecr:InitiateLayerUpload",
           "ecr:PutImage",
