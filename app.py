@@ -4,11 +4,13 @@ import os
 
 app = Flask(__name__)
 
+db_host = os.getenv("MYSQL_HOST", "mysql")
+
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"mysql+pymysql://"
     f"{os.getenv('MYSQL_USER')}:"
     f"{os.getenv('MYSQL_PASSWORD')}@"
-    f"mysql:3306/"
+    f"{db_host}:3306/"
     f"{os.getenv('MYSQL_DATABASE')}"
 )
 
