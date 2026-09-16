@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: 704348946409.dkr.ecr.ap-south-1.amazonaws.com/taskflow-frontend:b20866ee3c1d3a4003e4e92a9ae159272630a4f4
+          image: 704348946409.dkr.ecr.ap-south-1.amazonaws.com/taskflow-frontend:a6eecb74a5ad7c1fff1d17e2a3e82f39b3cf7620
 
           ports:
             - containerPort: 80
