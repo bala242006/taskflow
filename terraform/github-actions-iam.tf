@@ -3,7 +3,7 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
     effect = "Allow"
 
     principals {
-      type        = "Federated"
+      type = "Federated"
       identifiers = [
         "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
       ]
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = [
+      values = [
         "repo:bala242006@225511243/taskflow@1369601175:ref:refs/heads/main"
       ]
     }

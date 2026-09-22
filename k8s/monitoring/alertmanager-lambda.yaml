@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: taskflow-lambda
+  namespace: monitoring
+spec:
+  route:
+    receiver: taskflow-lambda
+    matchers:
+      - name: alertname
+        matchType: "="
+        value: HighNodeCPU
+
+  receivers:
+    - name: taskflow-lambda
+      webhookConfigs:
+        - url: "https://oqlyz7weafiuzt7obwcgcwxfh40msykm.lambda-url.ap-south-1.on.aws/"

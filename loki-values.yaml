@@ -1,0 +1,41 @@
+deploymentMode: SingleBinary
+
+loki:
+  auth_enabled: false
+  useTestSchema: true
+  commonConfig:
+    replication_factor: 1
+  storage:
+    type: filesystem
+    bucketNames:
+      chunks: chunks
+      ruler: ruler
+      admin: admin
+
+singleBinary:
+  replicas: 1
+  persistence:
+    enabled: false
+
+  extraVolumes:
+    - name: loki-storage
+      emptyDir: {}
+
+  extraVolumeMounts:
+    - name: loki-storage
+      mountPath: /var/loki
+
+backend:
+  replicas: 0
+
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
+chunksCache:
+  enabled: false
+
+resultsCache:
+  enabled: false

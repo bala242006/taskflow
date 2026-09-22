@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: taskflow-cpu-alert
+  namespace: monitoring
+spec:
+  groups:
+    - name: taskflow.rules
+      rules:
+        - alert: HighNodeCPU
+          expr: 100 * (1 - avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m]))) > 80
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High CPU usage detected"
+            description: "Node CPU usage has exceeded 80% for more than 1 minute."
